@@ -1,6 +1,5 @@
 package HarcosEsVarazslo;
 
-import java.util.Random;
 
 public class Jatek {
 
@@ -16,27 +15,39 @@ public class Jatek {
 
     public void start() {
         System.out.println("### - INDULJON A JÁTÉK - ###");
-        while(varazslo.getEletEro() > 0 && harcos.getEletEro() > 0){
-            ////////////////////////////jatekosokLepnek();
-            // lépnek a játékosok
-            varazslo.setElhelyezkedes(Dobokocka.lepes());
-            harcos.setElhelyezkedes(Dobokocka.lepes());
+        try{
+            while(varazslo.getEletEro() > 0 && harcos.getEletEro() > 0){
+                ////////////////////////////jatekosokLepnek();
+                // lépnek a játékosok
+                varazslo.setElhelyezkedes(Dobokocka.lepes());
+                harcos.setElhelyezkedes(Dobokocka.lepes());
 
-            // kiírjuk az állást
-            System.out.println(getKorAllas());
+                // kiírjuk az állást
+                System.out.println(getKorAllas());
 
-            // ha ugyanott vannak akkor harcolnak
-            if(varazslo.getElhelyezkedes() == harcos.getElhelyezkedes()){
-                varazslo.tamad(harcos);
-                harcos.tamad(varazslo);
+                // ha ugyanott vannak akkor harcolnak
+                if(varazslo.getElhelyezkedes() == harcos.getElhelyezkedes()){
+                    varazslo.tamad(harcos);
+                    harcos.tamad(varazslo);
+                }
+
+
             }
 
+            if(varazslo.getEletEro() == harcos.getEletEro()) {
+                throw new DontetlenException("A játékosoknak egyszerre fogyott el az életerejük");
+            }
 
+            // Eredmény kiírása
+            System.out.print("\nEREDMÉNYHIRDETÉS: ");
+            System.out.println(eredmenyHirdetes()+"\n");
+
+        } catch (DontetlenException e) {
+            System.out.println("### Döntetlen! ### : " + e.getMessage());
         }
 
-        // Eredmény kiírása
-        System.out.print("\nEREDMÉNYHIRDETÉS: ");
-        System.out.println(eredmenyHirdetes()+"\n");
+
+
 
         System.out.println("### - VÉGE - ###");
     }
