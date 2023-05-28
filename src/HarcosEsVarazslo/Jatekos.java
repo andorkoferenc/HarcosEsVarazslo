@@ -1,6 +1,6 @@
 package HarcosEsVarazslo;
 
-abstract class Jatekos  {
+abstract class Jatekos implements Tamad {
 
     protected int eletEro;
     protected int elhelyezkedes = -1;
@@ -30,9 +30,5 @@ abstract class Jatekos  {
     }
 
 
-    public void tamad(Jatekos jatekos) {
-        int utesEro = Dobokocka.dob();
-        jatekos.setEletEro(utesEro);
-        System.out.println("- A Harcos támad: " + utesEro + " > H:" + jatekos.getEletEro() + ", V:" + getEletEro());
-    }
+
 }

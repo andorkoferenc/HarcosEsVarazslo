@@ -37,20 +37,22 @@ public class Jatek {
 
         }
 
-        eredmenyHirdetes();
+        // Eredmény kiírása
+        System.out.print("\nEREDMÉNYHIRDETÉS: ");
+        System.out.println(eredmenyHirdetes()+"\n");
 
         System.out.println("### - VÉGE - ###");
     }
 
-    public void eredmenyHirdetes(){
+    public String eredmenyHirdetes(){
         String eredmeny = "!DÖNTETLEN!";
         if(varazslo.getEletEro() > harcos.getEletEro()) {
-            eredmeny = "Gyöztes: VARÁZSLÓ";
+            eredmeny = "Győzött a VARÁZSLÓ";
         }
         if(harcos.getEletEro() > varazslo.getEletEro()) {
-            eredmeny = "Gyöztes: HARCOS";
+            eredmeny = "Győzött a HARCOS";
         }
-        System.out.println(eredmeny);
+       return eredmeny;
     }
 
 
@@ -100,27 +102,6 @@ public class Jatek {
 
 }
 
-class Varazslo extends Jatekos {
-    public Varazslo(){
-        super();
-    }
 
-    public void tamad(Jatekos jatekos) {
-        int utesEro = Dobokocka.dob();
-        jatekos.setEletEro(utesEro);
-        System.out.println("- A Varázsló támad: " + utesEro + " > H:" + jatekos.getEletEro() + ", V:" + getEletEro());
-    }
-}
 
-class Harcos extends Jatekos {
-    public Harcos(){
-        super();
-    }
-
-    public void tamad(Jatekos jatekos) {
-        int utesEro = Dobokocka.dob();
-        jatekos.setEletEro(utesEro);
-        System.out.println("- A Harcos támad: " + utesEro + " > H:" + jatekos.getEletEro() + ", V:" + getEletEro());
-    }
-}
 
