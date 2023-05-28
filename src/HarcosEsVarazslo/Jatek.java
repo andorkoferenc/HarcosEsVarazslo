@@ -27,11 +27,8 @@ public class Jatek {
 
             // ha ugyanott vannak akkor harcolnak
             if(varazslo.getElhelyezkedes() == harcos.getElhelyezkedes()){
-                //System.out.println(getKorAllas());
                 varazslo.tamad(harcos);
                 harcos.tamad(varazslo);
-            } else {
-                //System.out.println(getKorAllas());
             }
 
 
